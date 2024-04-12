@@ -16,10 +16,7 @@ const DB_NAME = process.env.DB_NAME;
 
 mongoose.connect(CONNECTION_STRING, {dbName: DB_NAME});
 const app = express();
-app.use(cors({
-  credentials: true,
-  origin: process.env.FRONTEND_URL
-}));
+
 const sessionOptions = {
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -34,6 +31,10 @@ if (process.env.NODE_ENV !== "development") {
   };
 }
 app.use(session(sessionOptions));
+app.use(cors({
+  credentials: true,
+  origin: process.env.FRONTEND_URL
+}));
 app.use(express.json());
 UserRoutes(app);
 ModuleRoutes(app);
