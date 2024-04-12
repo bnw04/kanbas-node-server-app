@@ -33,7 +33,7 @@ if (process.env.NODE_ENV !== "development") {
 app.use(session(sessionOptions));
 app.use(cors({
   credentials: true,
-  origin: process.env.FRONTEND_URL
+  origin: ["http://localhost:3000", process.env.FRONTEND_URL, process.env.FRONTEND_URL2]
 }));
 app.use(express.json());
 UserRoutes(app);
