@@ -1,5 +1,5 @@
 import db from "../Database/index.js";
-function ModuleRoutes(app) {
+function ModuleRoutes1(app) {
 
   app.delete("/api/modules/:mid", (req, res) => {
     const { mid } = req.params;
@@ -37,4 +37,4 @@ function ModuleRoutes(app) {
     res.send(modules);
   });
 }
-export default ModuleRoutes;
+export default ModuleRoutes1;
