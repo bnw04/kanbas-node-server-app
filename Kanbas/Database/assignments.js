@@ -2,7 +2,7 @@ export default [
   {
     _id: "A001",
     title: "A1 - SETUP",
-    course: "CS101",
+    course: "660f377fb7acb472c9f112b6",
     points: 100,
     dueDate: "2023-09-18",
     availableDate: "2023-09-04",
@@ -12,7 +12,7 @@ export default [
   {
     _id: "A002",
     title: "A2 - HTML",
-    course: "CS101",
+    course: "660f377fb7acb472c9f112b6",
     points: 100,
     dueDate: "2023-09-25",
     availableDate: "2023-09-11",
@@ -22,7 +22,7 @@ export default [
   {
     _id: "A003",
     title: "A3 - CSS",
-    course: "CS101",
+    course: "660f377fb7acb472c9f112b6",
     points: 100,
     dueDate: "2023-10-02",
     availableDate: "2023-09-18",
@@ -32,7 +32,7 @@ export default [
   {
     _id: "A004",
     title: "A4 - BOOTSTRAP",
-    course: "CS101",
+    course: "660f377fb7acb472c9f112b6",
     points: 100,
     dueDate: "2023-10-10",
     availableDate: "2023-09-26",
@@ -42,7 +42,7 @@ export default [
   {
     _id: "A005",
     title: "A5 - JS",
-    course: "CS101",
+    course: "660f377fb7acb472c9f112b6",
     points: 100,
     dueDate: "2023-10-30",
     availableDate: "2023-10-16",
@@ -52,7 +52,7 @@ export default [
   {
     _id: "6557fcb7a11aca237708374b",
     title: "Propulsion Assignment",
-    course: "RS101",
+    course: "660f377fb7acb472c9f112b7",
     points: 100,
     dueDate: "2024-04-15",
     availableDate: "2024-04-01",
@@ -62,7 +62,7 @@ export default [
   {
     _id: "6557fcb7a11aca237708374c",
     title: "Combustion Analysis",
-    course: "RS101",
+    course: "660f377fb7acb472c9f112b7",
     points: 100,
     dueDate: "2024-05-01",
     availableDate: "2024-04-17",
@@ -72,7 +72,7 @@ export default [
   {
     _id: "6557fcb7a11aca237708374d",
     title: "Nozzle Design Project",
-    course: "RS101",
+    course: "660f377fb7acb472c9f112b7",
     points: 100,
     dueDate: "2024-05-15",
     availableDate: "2024-05-01",
@@ -82,7 +82,7 @@ export default [
   {
     _id: "6557fcb7a11aca237708374e",
     title: "Aerodynamics Quiz",
-    course: "RS102",
+    course: "660f377fb7acb472c9f112b8",
     points: 100,
     dueDate: "2024-04-10",
     availableDate: "2024-03-27",
@@ -92,7 +92,7 @@ export default [
   {
     _id: "6557fcb7a11aca237708374f",
     title: "Flow Analysis",
-    course: "RS102",
+    course: "660f377fb7acb472c9f112b8",
     points: 100,
     dueDate: "2024-05-05",
     availableDate: "2024-04-21",
@@ -102,7 +102,7 @@ export default [
   {
     _id: "6557fcb7a11aca2377083750",
     title: "Heating Analysis",
-    course: "RS102",
+    course: "660f377fb7acb472c9f112b8",
     points: 100,
     dueDate: "2024-05-20",
     availableDate: "2024-05-06",
@@ -112,7 +112,7 @@ export default [
   {
     _id: "6557fcb7a11aca2377083751",
     title: "Structural Design Task",
-    course: "RS103",
+    course: "660f377fb7acb472c9f112b9",
     points: 100,
     dueDate: "2024-06-01",
     availableDate: "2024-05-18",
@@ -122,7 +122,7 @@ export default [
   {
     _id: "6557fcb7a11aca2377083752",
     title: "Orbital Calculations",
-    course: "RS103",
+    course: "660f377fb7acb472c9f112b9",
     points: 100,
     dueDate: "2024-06-15",
     availableDate: "2024-06-01",
@@ -132,7 +132,7 @@ export default [
   {
     _id: "6557fcb7a11aca2377083753",
     title: "Systems Engineering Exam",
-    course: "RS103",
+    course: "660f377fb7acb472c9f112b9",
     points: 100,
     dueDate: "2024-06-30",
     availableDate: "2024-06-16",
