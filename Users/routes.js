@@ -21,7 +21,7 @@ export default function UserRoutes(app) {
     const currentUser = await dao.findUserByCredentials(username, password);
     try {
       if (currentUser) {
-        req.session.user = currentUser;
+        req.session.user_id = currentUser._id;
         res.json(currentUser);
       } else {
         throw new Error("Invalid Credential");
@@ -32,11 +32,11 @@ export default function UserRoutes(app) {
   };
 
   const profile = async (req, res) => {
-    if (!req.session.user) {
+    if (!req.session.user_id) {
       res.status(401).send("Not logged in");
       return;
     }
-    const currentUser = await dao.findUserById(req.session.user._id);
+    const currentUser = await dao.findUserById(req.session.user_id);
     res.json(currentUser);
   };
 
@@ -53,8 +53,8 @@ export default function UserRoutes(app) {
       }  
       const status = await dao.updateUser(userId, req.body);
       const currentUser = await dao.findUserById(userId);
-      req.session.user = currentUser;
-      res.json(status);
+      req.session.user_id = currentUser._id;
+      res.json(currentUser);
     } catch (error) {
       res.status(400).json({ message: error.message });
     } 
@@ -88,7 +88,7 @@ export default function UserRoutes(app) {
         throw new Error("Username already taken");
       }
       const currentUser = await dao.createUser(req.body);
-      req.session.user = currentUser;
+      req.session.user_id = currentUser._id;
       res.json(currentUser);
     } catch (error) {
       res.status(400).json(
