@@ -32,6 +32,10 @@ export default function UserRoutes(app) {
   };
 
   const profile = async (req, res) => {
+    if (!req.session.user) {
+      res.status(401).send("Not logged in");
+      return;
+    }
     const currentUser = await dao.findUserById(req.session.user._id);
     res.json(currentUser);
   };
