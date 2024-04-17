@@ -32,7 +32,7 @@ export default function UserRoutes(app) {
   };
 
   const profile = async (req, res) => {
-    const currentUser = req.session.user;
+    const currentUser = await dao.findUserById(req.session.user._id);
     res.json(currentUser);
   };
 
