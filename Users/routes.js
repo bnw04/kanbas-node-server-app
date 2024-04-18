@@ -1,4 +1,5 @@
 import * as dao from "./dao.js";
+let globalCurrentUser = null; 
 
 export default function UserRoutes(app) {
 
@@ -15,13 +16,14 @@ export default function UserRoutes(app) {
     const status = await dao.deleteUser(req.params.userId);
     res.json(status);
   };
-  
+
   const signin = async (req, res) => {
     const { username, password } = req.body;
     const currentUser = await dao.findUserByCredentials(username, password);
     try {
       if (currentUser) {
-        req.session.user = currentUser;
+        req.session["currentUser"] = currentUser;
+        globalCurrentUser = currentUser;
         res.json(currentUser);
       } else {
         throw new Error("Invalid Credential");
@@ -32,11 +34,12 @@ export default function UserRoutes(app) {
   };
 
   const profile = async (req, res) => {
-    if (!req.session.user) {
-      res.status(401).send("Not logged in");
+    let currentUser = req.session["currentUser"];
+    currentUser = globalCurrentUser;
+    if (!currentUser) {
+      res.sendStatus(401);
       return;
     }
-    const currentUser = await dao.findUserById(req.session.user._id);
     res.json(currentUser);
   };
 
@@ -53,8 +56,7 @@ export default function UserRoutes(app) {
       }  
       const status = await dao.updateUser(userId, req.body);
       const currentUser = await dao.findUserById(userId);
-      req.session.user = currentUser;
-      res.json(currentUser);
+      res.json(status);
     } catch (error) {
       res.status(400).json({ message: error.message });
     } 
@@ -88,7 +90,8 @@ export default function UserRoutes(app) {
         throw new Error("Username already taken");
       }
       const currentUser = await dao.createUser(req.body);
-      req.session.user = currentUser;
+      req.session["currentUser"] = currentUser;
+      globalCurrentUser = currentUser;
       res.json(currentUser);
     } catch (error) {
       res.status(400).json(
@@ -98,6 +101,7 @@ export default function UserRoutes(app) {
 
   const signout = (req, res) => {
     req.session.destroy();
+    globalCurrentUser = null;
     res.sendStatus(200);
   };
 
