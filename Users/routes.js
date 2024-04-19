@@ -1,5 +1,4 @@
 import * as dao from "./dao.js";
-let globalCurrentUser = null; 
 
 export default function UserRoutes(app) {
 
@@ -23,7 +22,6 @@ export default function UserRoutes(app) {
     try {
       if (currentUser) {
         req.session["currentUser"] = currentUser;
-        globalCurrentUser = currentUser;
         res.json(currentUser);
       } else {
         throw new Error("Invalid Credential");
@@ -35,7 +33,6 @@ export default function UserRoutes(app) {
 
   const profile = async (req, res) => {
     let currentUser = req.session["currentUser"];
-    currentUser = globalCurrentUser;
     if (!currentUser) {
       res.sendStatus(401);
       return;
@@ -56,6 +53,7 @@ export default function UserRoutes(app) {
       }  
       const status = await dao.updateUser(userId, req.body);
       const currentUser = await dao.findUserById(userId);
+      req.session['currentUser'] = currentUser;
       res.json(status);
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -91,7 +89,6 @@ export default function UserRoutes(app) {
       }
       const currentUser = await dao.createUser(req.body);
       req.session["currentUser"] = currentUser;
-      globalCurrentUser = currentUser;
       res.json(currentUser);
     } catch (error) {
       res.status(400).json(
@@ -101,7 +98,6 @@ export default function UserRoutes(app) {
 
   const signout = (req, res) => {
     req.session.destroy();
-    globalCurrentUser = null;
     res.sendStatus(200);
   };
 
